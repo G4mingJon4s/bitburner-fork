@@ -48,6 +48,7 @@ import React from "react";
 import { setupUncaughtPromiseHandler } from "./UncaughtPromiseHandler";
 import { Button, Typography } from "@mui/material";
 import { SnackbarEvents, ToastVariant } from "./ui/React/Snackbar";
+import { MathDemo } from "./MathDemo/MathDemo";
 
 const Engine: {
   _lastUpdate: number;
@@ -112,6 +113,11 @@ const Engine: {
     if (Player.corporation instanceof Corporation) {
       // Stores cycles in a "buffer". Processed separately using Engine Counters
       Player.corporation.storeCycles(numCycles);
+    }
+
+    // Math Demo
+    if (Player.mathDemo instanceof MathDemo) {
+      Player.mathDemo.storeCycles(numCycles);
     }
 
     if (Player.bladeburner instanceof Bladeburner) {
@@ -207,6 +213,11 @@ const Engine: {
     if (Player.corporation instanceof Corporation) {
       Player.corporation.process(Player);
     }
+
+    if (Player.mathDemo instanceof MathDemo) {
+      Player.mathDemo.process(Player);
+    }
+
     if (Engine.Counters.mechanicProcess <= 0) {
       if (Player.bladeburner instanceof Bladeburner) {
         try {

@@ -258,6 +258,10 @@ export function SidebarRoot(props: IProps): React.ReactElement {
     props.router.toAchievements();
   }
 
+  function clickMathDemo(): void {
+    props.router.toMathDemo();
+  }
+
   useEffect(() => {
     // Shortcuts to navigate through the game
     //  Alt-t - Terminal
@@ -637,6 +641,25 @@ export function SidebarRoot(props: IProps): React.ReactElement {
               </Typography>
             </ListItemText>
           </ListItem>
+
+          <ListItem
+            button
+            key={"MathDemo"}
+            className={clsx({
+              [classes.active]: props.page === Page.MathDemo,
+            })}
+            onClick={clickMathDemo}
+          >
+            <ListItemIcon>
+              <Tooltip title={!open ? "MathDemo" : ""}>
+                <AirplanemodeActiveIcon color={props.page !== Page.MathDemo ? "secondary" : "primary"} />
+              </Tooltip>
+            </ListItemIcon>
+            <ListItemText>
+              <Typography color={props.page !== Page.MathDemo ? "secondary" : "primary"}>Math Demo</Typography>
+            </ListItemText>
+          </ListItem>
+
           <ListItem
             button
             key={"Travel"}

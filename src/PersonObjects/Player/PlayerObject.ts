@@ -43,12 +43,18 @@ import { defaultMultipliers, Multipliers } from "../Multipliers";
 import { HP } from "../HP";
 import { Skills } from "../Skills";
 
+import { IMathDemo } from "../../MathDemo/interfaces/IMathDemo";
+import { MathDemo } from "../../MathDemo/MathDemo";
+
 export class PlayerObject implements IPlayer {
   // Class members
   augmentations: IPlayerOwnedAugmentation[];
   bitNodeN: number;
   city: CityName;
   corporation: ICorporation | null;
+
+  mathDemo: IMathDemo | null;
+
   gang: IGang | null;
   bladeburner: IBladeburner | null;
   currentServer: string;
@@ -250,6 +256,10 @@ export class PlayerObject implements IPlayer {
 
     //Corporation
     this.corporation = null;
+
+    //Math Demo
+    // this.mathDemo = null;
+    this.mathDemo = new MathDemo();
 
     //Bladeburner
     this.bladeburner = null;

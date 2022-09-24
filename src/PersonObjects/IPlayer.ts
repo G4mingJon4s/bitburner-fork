@@ -34,11 +34,16 @@ import { Multipliers } from "./Multipliers";
 import { Skills } from "./Skills";
 import { HP } from "./HP";
 
+import { IMathDemo } from "../MathDemo/interfaces/IMathDemo";
+
 export interface IPlayer extends IPerson {
   bitNodeN: number;
   city: CityName;
   corporation: ICorporation | null;
   gang: IGang | null;
+
+  mathDemo: IMathDemo | null;
+
   bladeburner: IBladeburner | null;
   currentServer: string;
   factions: string[];

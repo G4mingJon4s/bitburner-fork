@@ -1,0 +1,18 @@
+[X] Theory creation 
+[X] Theory UI
+[ ] Theory publishing
+[X] Integral equation
+[ ] think of more equations
+[ ] Balancing
+[ ] Equation creation cost
+[ ] Equation deletion refund
+[ ] Styling
+[ ] Overview UI
+[ ] Equation stats
+[X] Equation naming
+[ ] Equation name tooltip
+[ ] More mechanics
+
+Current Bugs:
+- Removing an equation from the top, causes the JaxWrapper to not render the equations under it.
+  -> rerendering doesn't help

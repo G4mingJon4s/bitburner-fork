@@ -66,6 +66,8 @@ import { PromptManager } from "./React/PromptManager";
 import { InvitationModal } from "../Faction/ui/InvitationModal";
 import { calculateAchievements } from "../Achievements/Achievements";
 
+import { MathDemoRoot } from "../MathDemo/ui/MathDemoRoot";
+
 import { enterBitNode } from "../RedPill";
 import { Context } from "./Context";
 import { RecoveryMode, RecoveryRoot } from "./React/RecoveryRoot";
@@ -146,6 +148,8 @@ export let Router: IRouter = {
   toAchievements: uninitialized,
   toThemeBrowser: uninitialized,
   toImportSave: uninitialized,
+
+  toMathDemo: uninitialized,
 };
 
 function determineStartPage(player: IPlayer): Page {
@@ -279,6 +283,10 @@ export function GameRoot({ player, engine, terminal }: IProps): React.ReactEleme
       setImportAutomatic(automatic);
       setPage(Page.ImportSave);
     },
+
+    toMathDemo: () => {
+      setPage(Page.MathDemo);
+    }
   };
 
   useEffect(() => {
@@ -492,6 +500,12 @@ export function GameRoot({ player, engine, terminal }: IProps): React.ReactEleme
       withSidebar = false;
       withPopups = false;
       bypassGame = true;
+      break;
+    }
+
+    case Page.MathDemo: {
+      mainPage = <MathDemoRoot />;
+      break;
     }
   }
 
