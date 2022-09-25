@@ -28,8 +28,10 @@ export class MathDemo implements IMathDemo {
   }
 
   addNewEquation() {
+    if (this.knowledge < 1e4) return;
     const newEquation = mathEquationList[Math.floor(Math.random() * mathEquationList.length)];
     this.equations.push(newEquation());
+    this.knowledge -= 1e4;
     console.log("New equation");
   }
 

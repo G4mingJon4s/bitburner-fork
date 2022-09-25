@@ -52,7 +52,9 @@ export function MathOverview(props: IProps): React.ReactElement {
       <Typography>{"[-] Removing equations from theories back to the equations list"}</Typography>
       <Typography>{"[ ] Adding an exponential cost to making theories and equations"}</Typography>
       <Typography>{"[ ] Removing theories / Changing theory names"}</Typography>
-      <Typography>{"[ ] "}</Typography>
+      <Typography>{"[ ] Displaying equation name"}</Typography>
+      <Typography>{"[ ] An actual overview"}</Typography>
+      <Typography>{"[ ] Equation stats"}</Typography>
       <Typography>{"[ ] More equations"}</Typography>
       <Typography>{"[ ] Selling theories (getting money from them)"}</Typography>
       <Typography>{"[?] Balancing"}</Typography>

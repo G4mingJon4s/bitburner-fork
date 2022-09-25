@@ -81,7 +81,7 @@ export function MathDemoRoot(): React.ReactElement {
         <Typography variant='h6'>Equations {mathDemo.debug ? "DEBUG MODE ACTIVATED - NO COSTS" : ""}</Typography>
           <Paper>
             <Typography>Here, you can see all of your equations. Later on you can bundle them together to make a theory.</Typography>
-            {mathDemo.equations.length < 4 && <Button onClick={handleNewEquation}>Come up with a new Equation</Button>}
+            {(mathDemo.equations.length < 4 && mathDemo.knowledge > 1e4) && <Button onClick={handleNewEquation}>Come up with a new Equation</Button>}
             {mathDemo.equations.length > 0 && (
             <Stack direction="column">
               {mathDemo.equations.map((equation, i) => <MathEquationElem key={i} equation={equation} isInTheory={false} rerender={rerender}></MathEquationElem>)}
@@ -92,11 +92,11 @@ export function MathDemoRoot(): React.ReactElement {
       )}
       {!windows.includes(currentWindow) && <MathTheoryElem theory={getTheory(currentWindow)} rerender={rerender}/>}
       {currentWindow === "New Theory" && (
-      <>
-        <Typography variant='h6'>Create a new Theory!</Typography>
-        <Button onClick={handleNewTheory} disabled={!canMakeNewTheory}>Create a new Theory!</Button>
-        <MathTheoryModal cost={20e7} onClose={() => setTheoryModalOpen(false)} open={theoryModalOpen} onSubmit={onSubmit}></MathTheoryModal>
-      </>
+        <>
+          <Typography variant='h6'>Create a new Theory!</Typography>
+          <Button onClick={handleNewTheory} disabled={!canMakeNewTheory}>Create a new Theory!</Button>
+          <MathTheoryModal cost={20e7} onClose={() => setTheoryModalOpen(false)} open={theoryModalOpen} onSubmit={onSubmit}></MathTheoryModal>
+        </>
       )}
     </Context.MathDemo.Provider>
   )
