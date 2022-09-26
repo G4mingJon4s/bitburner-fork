@@ -1,5 +1,5 @@
 import { IPlayer } from "src/PersonObjects/IPlayer";
-import { EMathTraits } from "./data/EMathTraits";
+import { EMathTrait } from "./data/EMathTrait";
 import { IMathDemo } from "./interfaces/IMathDemo";
 import { IMathEquation, IMathVariable } from "./interfaces/IMathEquation";
 
@@ -8,9 +8,9 @@ export class MathEquation implements IMathEquation {
   equationFunction: (...variables: IMathVariable[]) => number;
   variables: IMathVariable[];
   name: string;
-  traits: EMathTraits[];
+  traits: EMathTrait[];
 
-  constructor(name: string, equationString: string, equationFunction: (...variables: IMathVariable[]) => number, variables: IMathVariable[], traits: EMathTraits[]) {
+  constructor(name: string, equationString: string, equationFunction: (...variables: IMathVariable[]) => number, variables: IMathVariable[], traits: EMathTrait[]) {
     this.equationString = equationString;
     this.equationFunction = equationFunction;
     this.variables = variables;

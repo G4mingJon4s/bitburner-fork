@@ -14,6 +14,7 @@ export interface IMathDemo {
   addNewTheory: (name: string, startEquation: IMathEquation) => void;
   addNewEquation: () => void;
   removeEquation: (equation: IMathEquation) => void;
+  removeTheoryEquation: (equation: IMathEquation, theoryName: string) => void;
   process: (player: IPlayer) => void;
   storeCycles: (numCycles: number) => void;
 }

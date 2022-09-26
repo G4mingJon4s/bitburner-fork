@@ -84,7 +84,7 @@ export function MathDemoRoot(): React.ReactElement {
             {(mathDemo.equations.length < 4 && mathDemo.knowledge > 1e4) && <Button onClick={handleNewEquation}>Come up with a new Equation</Button>}
             {mathDemo.equations.length > 0 && (
             <Stack direction="column">
-              {mathDemo.equations.map((equation, i) => <MathEquationElem key={i} equation={equation} isInTheory={false} rerender={rerender}></MathEquationElem>)}
+              {mathDemo.equations.map((equation, i) => <MathEquationElem key={i} equation={equation} isInTheory={false} rerender={rerender} theoryName={null} canRemove={true}/>)}
             </Stack>
             )}
           </Paper>

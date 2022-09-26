@@ -1,4 +1,5 @@
 import { IPlayer } from "src/PersonObjects/IPlayer";
+import { EMathTrait } from "./data/EMathTrait";
 import { IMathDemo } from "./interfaces/IMathDemo";
 import { IMathEquation } from "./interfaces/IMathEquation";
 import { IMathTheory } from "./interfaces/IMathTheory";
@@ -16,7 +17,17 @@ export class MathTheory implements IMathTheory {
   }
 
   process(mathDemo: IMathDemo, player: IPlayer) {
-    this.theoryMult = this.equations.reduce((acc, equation) => Math.log10(acc + equation.variables.reduce((acc, variable) => acc + variable.level, 0)), 1);
+    const matches = this.equations.reduce((acc, equation) => {
+      equation.traits.forEach(trait => acc.set(trait, (acc.get(trait) ?? 0) + 1));
+      return acc;
+    }, new Map<EMathTrait, number>());
+    const matchingMult = Object.entries(matches).reduce((acc, entry) => {
+      if (entry[1] === 0) return acc;
+      if (entry[1] > 2) return acc + 1;
+      return acc + 0.5;
+    }, 1);
+    this.theoryMult = this.equations.reduce((acc, equation) => Math.log10(acc + equation.variables.reduce((acc, variable) => acc + variable.level, 0)), 1) * matchingMult;
+    
     this.equations.forEach((equation) => equation.process(mathDemo, player, { theoryMult: this.theoryMult }));
   }
 
@@ -25,5 +36,10 @@ export class MathTheory implements IMathTheory {
     if (this.equations.length > 4) throw new Error("Theory is full!");
     this.equations.push(equation);
     mathDemo.equations.splice(mathDemo.equations.indexOf(equation), 1);
+  }
+
+  removeEquation(equation: IMathEquation) {
+    if (!this.equations.includes(equation)) throw new Error("Could not find equation");
+    this.equations.splice(this.equations.indexOf(equation), 1);
   }
 }

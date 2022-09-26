@@ -1,4 +1,4 @@
-export enum EMathTraits {
+export enum EMathTrait {
   linear,
   quadratic,
   exponential,

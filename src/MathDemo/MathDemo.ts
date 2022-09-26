@@ -40,6 +40,15 @@ export class MathDemo implements IMathDemo {
     console.log("Remove equation");
   }
 
+  removeTheoryEquation(equation: IMathEquation, theoryName: string) {
+    if (this.equations.length > 3) return;
+
+    const index = this.theories.findIndex(theory => theory.name === theoryName);
+    if (index === -1) throw new Error("Could not find theory");
+    this.theories[index].removeEquation(equation);
+    this.equations.push(equation);
+  }
+
   process(player: IPlayer) {
     if (this.storedCycles < 20) return; // constant later on
     this.equations.forEach((equation) => equation.process(this, player));

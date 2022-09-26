@@ -1,4 +1,5 @@
 import { IPlayer } from "src/PersonObjects/IPlayer";
+import { EMathTrait } from "../data/EMathTrait";
 import { IMathDemo } from "./IMathDemo";
 
 export interface IMathEquation {
@@ -6,6 +7,7 @@ export interface IMathEquation {
   equationFunction: (...variables: IMathVariable[]) => number;
   variables: IMathVariable[];
   name: string;
+  traits: EMathTrait[];
   
   process: (mathDemo: IMathDemo, player: IPlayer, opts?: { theoryMult: number }) => void;
 }

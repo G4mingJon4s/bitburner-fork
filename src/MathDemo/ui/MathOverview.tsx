@@ -49,12 +49,14 @@ export function MathOverview(props: IProps): React.ReactElement {
       <Typography>{"[X] Theory creation and UI"}</Typography>
       <Typography>{"[X] Adding equations to theories after creation"}</Typography>
       <Typography>{"[X] Added some more equations (PI approximation and integral)"}</Typography>
-      <Typography>{"[-] Removing equations from theories back to the equations list"}</Typography>
-      <Typography>{"[ ] Adding an exponential cost to making theories and equations"}</Typography>
+      <Typography>{"[X] Removing equations from theories back to the equations list"}</Typography>
+      <Typography>{"[X] Equation traits"}</Typography>
+      <Typography>{"[-] Displaying equation name"}</Typography>
+      <Typography>{"[-] Adding an exponential cost to making theories and equations"}</Typography>
       <Typography>{"[ ] Removing theories / Changing theory names"}</Typography>
-      <Typography>{"[ ] Displaying equation name"}</Typography>
       <Typography>{"[ ] An actual overview"}</Typography>
       <Typography>{"[ ] Equation stats"}</Typography>
+      <Typography>{"[ ] Showing equation traits"}</Typography>
       <Typography>{"[ ] More equations"}</Typography>
       <Typography>{"[ ] Selling theories (getting money from them)"}</Typography>
       <Typography>{"[?] Balancing"}</Typography>

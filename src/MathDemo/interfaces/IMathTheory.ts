@@ -8,4 +8,5 @@ export interface IMathTheory {
   theoryMult: number;
   process: (mathDemo: IMathDemo, player: IPlayer) => void;
   addEquation: (equation: IMathEquation, mathDemo: IMathDemo) => void;
+  removeEquation: (equation: IMathEquation) => void;
 }

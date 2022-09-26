@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Button, Paper, Typography } from '@mui/material'
+import { Button, Paper, Tooltip, Typography } from '@mui/material'
 import { MathJaxWrapper } from '../../MathJaxWrapper'
 import { IMathEquation } from '../interfaces/IMathEquation'
 import { MathVariableElem } from './MathVariableElem';
@@ -10,6 +10,8 @@ import { MathTheorySelectModal } from './MathTheorySelectModal';
 interface IProps {
   equation: IMathEquation;
   isInTheory: boolean;
+  canRemove: boolean;
+  theoryName: string | null;
   rerender: () => void;
 }
 
@@ -33,8 +35,9 @@ export function MathEquationElem(props: IProps): React.ReactElement {
 
   function handleRemoveEquation() {
     if (props.isInTheory) {
-      console.log("This is WIP!");
-
+      if (props.theoryName === null) throw new Error("Equation is in theory, but has no theoryName assigned!");
+      if (mathDemo.equations.length > 3) return;
+      mathDemo.removeTheoryEquation(props.equation, props.theoryName);
       props.rerender();
       return;
     }
@@ -44,10 +47,14 @@ export function MathEquationElem(props: IProps): React.ReactElement {
 
   return (
     <Paper sx={{p: "10px"}}>
-      <Typography variant='h6'><MathJaxWrapper>{props.equation.equationString}</MathJaxWrapper></Typography>
+      <Tooltip title={props.equation.name} placement="top">
+        <Typography justifyContent="flex" variant='h6'>
+          <MathJaxWrapper>{props.equation.equationString}</MathJaxWrapper>
+        </Typography>
+      </Tooltip>
       {props.equation.variables.map((variable, i) => <MathVariableElem key={i + "v"} variable={variable} />)}
       {(!props.isInTheory && mathDemo.theories.length > 0) && <Button onClick={handleAddToTheory}>Add to theory</Button>}
-      <Button color='error' disabled={!(!props.isInTheory || mathDemo.equations.length < 4)} onClick={handleRemoveEquation}>Remove Equation</Button>
+      {props.canRemove && <Button color='error' disabled={!(!props.isInTheory || mathDemo.equations.length < 4)} onClick={handleRemoveEquation}>Remove Equation</Button>}
       <MathTheorySelectModal onClose={() => setSelectModalOpen(false)} open={selectModalOpen} onSubmit={onSubmit}></MathTheorySelectModal>
     </Paper>
   )
